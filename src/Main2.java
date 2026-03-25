@@ -1,28 +1,30 @@
 import java.util.Scanner;
 
-// Interface for Loan
+// Interface for Loan 
 interface Loan
 {
+    // Method to calculate EMI based on principal, rate, and duration
     double calculateEMI(double P, double R, int N);
 }
 
-// Interface for Insurance
+// Interface for Insurance 
 interface Insurance
 {
+    // Method to calculate insurance premium 
     double calculatePremium(double price, double rate);
 }
 
-// Vehicle class implementing both interfaces
+// Vehicle class implementing both Loan and Insurance interfaces
 class Vehicle implements Loan, Insurance
 {
     String vehicleNumber;
     String brand;
     double price;
 
-    // Method to read vehicle details
+    // Method to input vehicle details 
     void addVehicle(Scanner sc)
     {
-        sc.nextLine();
+        sc.nextLine(); 
 
         System.out.print("Enter Vehicle Number: ");
         vehicleNumber = sc.nextLine();
@@ -34,24 +36,25 @@ class Vehicle implements Loan, Insurance
         price = sc.nextDouble();
     }
 
-    // EMI calculation
+    // Overridden method to calculate EMI 
     public double calculateEMI(double P, double R, int N)
     {
-        R = R / (12 * 100);   // Convert annual interest rate to monthly interest rate
-        N = N * 12;           // Convert year to months
+        R = R / (12 * 100);   // Convert annual rate to monthly rate
+        N = N * 12;           // Convert years to months
 
         double emi = (P * R * Math.pow(1 + R, N)) /(Math.pow(1 + R, N) - 1);
+        //Math class in the java.lang package,automatically imported
 
         return emi;
     }
 
-    // Insurance premium calculation
+    // Overridden method to calculate insurance premium
     public double calculatePremium(double price, double rate)
     {
         return price * rate / 100;
     }
 
-    // Display vehicle details
+    // Method to display vehicle details
     void displayVehicle()
     {
         System.out.println("\nVehicle Number: " + vehicleNumber);
@@ -60,7 +63,7 @@ class Vehicle implements Loan, Insurance
     }
 }
 
-// Main class
+// Main class containing menu-driven program
 public class Main2
 {
     public static void main(String[] args)
@@ -69,6 +72,7 @@ public class Main2
         Vehicle v = new Vehicle();
         int choice;
 
+        // Menu-driven loop
         do
         {
             System.out.println("\n1. Add Vehicle");
