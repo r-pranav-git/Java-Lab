@@ -123,7 +123,7 @@ All programs are organized inside the `src` folder.
 
 ## 👨‍💻 Author
 
-**Pranav R**
+**R Pranav**
 
 ---
 
